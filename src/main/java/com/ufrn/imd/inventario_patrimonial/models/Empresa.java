@@ -14,8 +14,8 @@ public class Empresa {
     private Long idEmpresa;
     @Column(columnDefinition = "TEXT")
     private String nome;
-    @Column(unique = true)
     @CNPJ
+    @Column(unique = true)
     private String cpnj;
     @ManyToOne
     @JoinColumn(name = "endereco_id")

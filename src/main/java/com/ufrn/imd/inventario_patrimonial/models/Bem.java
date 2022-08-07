@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
-public class Ben{
+public class Bem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +18,9 @@ public class Ben{
     @ManyToOne
     @JoinColumn(name = "predio_id")
     private Predio predio;
+
+    @Enumerated(EnumType.ORDINAL)
+    private TipoBem tipoBem;
 
     public Long getIdBen() {
         return idBen;
