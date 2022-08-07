@@ -9,17 +9,12 @@ public class Predio {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idPredio;
 
-    @Column(columnDefinition = "TEXT")
-    private String logradouro;
-
-    @Column(columnDefinition = "INTEGER")
-    private Integer numero;
-
-    @Pattern(regexp = "\\d{5}-\\d{3}")
-    private String cep;
+    @ManyToOne
+    @JoinColumn(name = "endereco_id")
+    private Endereco endereco;
 
     @Column(columnDefinition = "TEXT")
-    private String bairro;
+    private String categoria;
 
     public long getIdPredio() {
         return idPredio;
@@ -29,35 +24,19 @@ public class Predio {
         this.idPredio = idPredio;
     }
 
-    public String getLogradouro() {
-        return logradouro;
+    public Endereco getEndereco() {
+        return endereco;
     }
 
-    public void setLogradouro(String logradouro) {
-        this.logradouro = logradouro;
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
-    public Integer getNumero() {
-        return numero;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setNumero(Integer numero) {
-        this.numero = numero;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public void setCep(String cep) {
-        this.cep = cep;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public void setBairro(String bairro) {
-        this.bairro = bairro;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 }

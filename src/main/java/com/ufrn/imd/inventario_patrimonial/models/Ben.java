@@ -15,6 +15,10 @@ public class Ben{
 
     private BigDecimal valor;
 
+    @ManyToOne
+    @JoinColumn(name = "predio_id")
+    private Predio predio;
+
     public Long getIdBen() {
         return idBen;
     }
