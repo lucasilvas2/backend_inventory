@@ -8,7 +8,7 @@ public class Bem {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idBen;
+    private Long idBem;
 
     @Column(columnDefinition = "TEXT")
     private String qrcode;
@@ -22,12 +22,12 @@ public class Bem {
     @Enumerated(EnumType.ORDINAL)
     private TipoBem tipoBem;
 
-    public Long getIdBen() {
-        return idBen;
+    public Long getIdBem() {
+        return idBem;
     }
 
-    public void setIdBen(Long idBen) {
-        this.idBen = idBen;
+    public void setIdBem(Long idBem) {
+        this.idBem = idBem;
     }
 
     public String getQrcode() {
@@ -44,5 +44,21 @@ public class Bem {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+    public Predio getPredio() {
+        return predio;
+    }
+
+    public void setPredio(Predio predio) {
+        this.predio = predio;
+    }
+
+    public TipoBem getTipoBem() {
+        return tipoBem;
+    }
+
+    public void setTipoBem(TipoBem tipoBem) {
+        this.tipoBem = tipoBem;
     }
 }
