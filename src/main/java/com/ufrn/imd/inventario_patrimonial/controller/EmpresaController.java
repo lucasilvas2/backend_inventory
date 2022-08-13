@@ -36,6 +36,15 @@ public class EmpresaController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @GetMapping(value = "/buscar/{empresa_id}")
+    public ResponseEntity<?>  buscarPorId(@PathVariable Long empresa_id){
+        Empresa empresaSalvo = empresaService.buscarPorId(empresa_id);
+        if(empresaSalvo != null){
+            return new ResponseEntity<>(empresaSalvo, HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
 
     @DeleteMapping(value = "/deletar/{empresa_id}")
     public ResponseEntity<?> deletar(@PathVariable Long empresa_id){
@@ -52,9 +61,8 @@ public class EmpresaController {
         List<Empresa> empresa_list = empresaService.buscarPorNome(empresa_nome);
         if(!empresa_list.isEmpty()){
             return new ResponseEntity<>(empresa_list, HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping(value = "/buscar/cnpj/{empresa_nome}")
@@ -62,9 +70,8 @@ public class EmpresaController {
         List<Empresa> empresa_list = empresaService.buscarPorCnpj(empresa_cnpj);
         if(!empresa_list.isEmpty()){
             return new ResponseEntity<>(empresa_list, HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
     @GetMapping(value = "/buscar/endereco/{endereco_id}")
@@ -72,8 +79,7 @@ public class EmpresaController {
         List<Empresa> empresa_list = empresaService.buscarPorEndereco(endereco_id);
         if(!empresa_list.isEmpty()){
             return new ResponseEntity<>(empresa_list, HttpStatus.OK);
-        }else{
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 }
