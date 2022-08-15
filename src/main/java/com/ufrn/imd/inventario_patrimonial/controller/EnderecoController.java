@@ -32,13 +32,13 @@ public class EnderecoController {
     @GetMapping(value = "/buscar")
     public ResponseEntity<?> buscar(){
         List<Endereco> endereco_list = enderecoService.buscarTodosEnderecos();
-        if(!endereco_list.isEmpty()){
+        if(endereco_list != null){
             return new ResponseEntity<>(endereco_list, HttpStatus.OK);
         }else{
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    @GetMapping(value = "/deletar/{endereco_id}")
+    @DeleteMapping(value = "/deletar/{endereco_id}")
     public ResponseEntity<?> deletar(@PathVariable Long endereco_id){
         Endereco enderecoSalvo = enderecoService.buscarEnderecoPorId(endereco_id);
         if(enderecoSalvo != null){

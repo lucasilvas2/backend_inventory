@@ -2,7 +2,6 @@ package com.ufrn.imd.inventario_patrimonial.controller;
 
 import com.ufrn.imd.inventario_patrimonial.Service.EmpresaService;
 import com.ufrn.imd.inventario_patrimonial.models.Empresa;
-import com.ufrn.imd.inventario_patrimonial.models.Endereco;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ public class EmpresaController {
     @Autowired
     private EmpresaService empresaService;
 
-    @PostMapping
+    @PostMapping(value = "/cadastrar")
     public ResponseEntity<?> cadastrar(@RequestBody Empresa empresa, @PathVariable Long endereco_id){
         Empresa empresaSalva = empresaService.cadastrar(empresa, endereco_id);
         if(empresa != null){
@@ -65,7 +64,7 @@ public class EmpresaController {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
-    @GetMapping(value = "/buscar/cnpj/{empresa_nome}")
+    @GetMapping(value = "/buscar/cnpj/{empresa_cnpj}")
     public ResponseEntity<?> buscarPorCnpj(@PathVariable String empresa_cnpj){
         List<Empresa> empresa_list = empresaService.buscarPorCnpj(empresa_cnpj);
         if(!empresa_list.isEmpty()){
