@@ -19,8 +19,7 @@ public class Bem {
     @JoinColumn(name = "predio_id")
     private Predio predio;
 
-    @Enumerated(EnumType.ORDINAL)
-    private TipoBem tipoBem;
+    private Integer tipoBem;
 
     public Long getIdBem() {
         return idBem;
@@ -55,10 +54,10 @@ public class Bem {
     }
 
     public TipoBem getTipoBem() {
-        return tipoBem;
+        return TipoBem.valueOf(tipoBem);
     }
 
     public void setTipoBem(TipoBem tipoBem) {
-        this.tipoBem = tipoBem;
+        this.tipoBem = tipoBem.getCode();
     }
 }
